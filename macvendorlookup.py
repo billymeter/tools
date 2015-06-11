@@ -4,9 +4,13 @@
 import requests
 import argparse
 import sys
+import re
 
 # Link to the OUI file that contains the company IDs
 oui_file = 'http://standards-oui.ieee.org/oui.txt'
+
+# Global for the database dictionary that must be loaded
+database = {}
 
 def download_oui_file():
     filename = oui_file.split('/')[-1]
@@ -23,7 +27,7 @@ def download_oui_file():
         sys.exit(1)
 
 def create_database(oui):
-
+    pass
 
 def main():
     parser = argparse.ArgumentParser(prog=sys.argv[0],
@@ -33,7 +37,7 @@ def main():
                         help='MAC address to look up')
     parser.add_argument('-f', '--file', metavar='file',
                         help='Load list of MACs, one per line')
-    parser.add_argument('-d', '--database', metavar='',
+    parser.add_argument('-d', '--database', action='store_true',
                         help='Recreate the OUI lookup database')
     args = parser.parse_args()
 
